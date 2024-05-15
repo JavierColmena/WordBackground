@@ -1,6 +1,8 @@
 const lista = document.getElementById('lista');
 const addItem = document.getElementById('addItem')
 const inputWord = document.getElementById('inputWord')
+const openClose = document.getElementById('openClose')
+const menu = document.getElementById('menu')
 
 let words = localStorage.getItem('randomParticles') ? localStorage.getItem('randomParticles').split(',') : [];
 
@@ -19,6 +21,11 @@ addItem.onclick = () =>{
     localStorage.setItem('randomParticles', [...words,word]);
     renderWordList();
 
+}
+let isOpen = true
+openClose.onclick = () =>{
+    
+    isOpen ? menu.classList.toggle('close') : menu.classList.toggle('close')
 }
 
 function renderWordList() {

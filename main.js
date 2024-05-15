@@ -1,5 +1,5 @@
 window.onload = () => {
-    
+
 
     const CANVAS = document.getElementById('canvas');
     const preCanvas = document.getElementById('preCanvas');
@@ -7,24 +7,32 @@ window.onload = () => {
     const WIDTH = CANVAS.width = window.screen.width;
     const HEIGHT = CANVAS.height = window.screen.height;
 
-    preCanvas.style.width = `${window.screen.width / 0}px`;
-    preCanvas.style.height = `${window.screen.height / 0}px`;
+    preCanvas.style.width = `${window.screen.width}px`;
+    preCanvas.style.height = `${window.screen.height}px`;
 
     const FPS = 60;
-    const SPEED = 1;
+    const SPEED = .3;
     const maxTileSize = 30;
     let particles = [];
     let mousePos = { x: undefined, y: undefined };
 
     const randomParticles = localStorage.getItem('randomParticles') ? localStorage.getItem('randomParticles').split(',') : ['default']
 
-    if(!localStorage.getItem('randomParticles')){
+    if (!localStorage.getItem('randomParticles')) {
         localStorage.setItem('randomParticles', randomParticles.toString())
     }
 
     const fontSize = '25px'
-    const areaRange = 200
+    const areaRange = 150
 
+    function getTouchPos(canvas, evt) {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const x = (evt.touches[0].clientX - rect.left) * scaleX;
+        const y = (evt.touches[0].clientY - rect.top) * scaleY;
+        return { x: x, y: y };
+    }
     function getMousePos(canvas, evt) {
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
@@ -34,6 +42,9 @@ window.onload = () => {
         return { x: x, y: y };
     }
 
+    CANVAS.addEventListener('touchmove', (evt) => {
+        mousePos = getTouchPos(CANVAS, evt);
+    });
     CANVAS.addEventListener('mousemove', (evt) => {
         mousePos = getMousePos(CANVAS, evt);
     });
@@ -46,15 +57,18 @@ window.onload = () => {
             this.y = y;
             this.tileSize = tileSize;
             this.color = `rgba(${randomNum(255)},${randomNum(255)},${randomNum(255)},${Math.random() * 1})`;
+            // this.color = 'white'
             this.randomVelocity();
             this.ranNumParticle = Math.floor(Math.random() * randomParticles.length)
         }
         draw() {
             ctx.beginPath();
             // ctx.arc(this.x, this.y, this.tileSize, 0, 2 * Math.PI);
-            ctx.font = `${fontSize} Impact`;
+            ctx.shadowColor = 'blue';
+            ctx.shadowBlur = 70;
+            ctx.font = `${fontSize} Arial`;
             ctx.fillText(randomParticles[this.ranNumParticle], this.x, this.y)
-            ctx.fillStyle = this.color;
+            ctx.fillStyle = 'cyan';
             // ctx.fill();
         }
 
@@ -63,7 +77,7 @@ window.onload = () => {
             const dy = this.y - mousePos.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < areaRange) { 
+            if (distance < areaRange) {
                 const repulsionX = dx / distance;
                 const repulsionY = dy / distance;
 
@@ -82,10 +96,10 @@ window.onload = () => {
             }
         }
 
-        
+
         randomVelocity() {
-            this.vx = (Math.random() - 0.5) * SPEED; 
-            this.vy = (Math.random() - 0.5) * SPEED; 
+            this.vx = (Math.random() - 0.5) * SPEED;
+            this.vy = (Math.random() - 0.5) * SPEED;
         }
     }
 
@@ -115,6 +129,6 @@ window.onload = () => {
         return Math.round(Math.random() * num);
     }
 
-    generateParticles(500);
+    generateParticles(1000);
     loop();
 };

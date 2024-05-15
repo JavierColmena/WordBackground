@@ -7,7 +7,6 @@
     color-scheme: dark;
     overflow: hidden;
 }
-
 main {
     border-radius: 10px;
 
@@ -22,4 +21,12 @@ main {
         opacity: 1;
 
     }
+}
+
+.open{
+    display: block;
+}
+.close{
+    align-self: flex-end;
+    display: none;
 }
