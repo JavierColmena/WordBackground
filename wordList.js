@@ -9,13 +9,13 @@ function delWord(word) {
         return wordFil != word
     }));
 
-    words = words.filter(w => w !== word); // Filtrar las palabras para eliminar la palabra especificada
+    words = words.filter(w => w !== word); 
     renderWordList();
 }
 
 addItem.onclick = () =>{
-    const word = `${inputWord.value}`
-    words.push(word)
+    let word = inputWord.value
+    // words.push(word)
     localStorage.setItem('randomParticles', [...words,word]);
     renderWordList();
 
@@ -34,7 +34,7 @@ function renderWordList() {
         const button = document.createElement('button');
         button.classList.add('bg-red-500', 'w-6', 'p-1', 'rounded-md');
         button.innerHTML = '<img src="trash.png" class="invert" alt="trash">';
-        button.onclick = () => delWord(word); // Usar una función anónima para pasar el valor de 'word'
+        button.onclick = () => delWord(word);
 
         li.appendChild(h1);
         li.appendChild(button);

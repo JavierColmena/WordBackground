@@ -1,12 +1,14 @@
 window.onload = () => {
+    
+
     const CANVAS = document.getElementById('canvas');
     const preCanvas = document.getElementById('preCanvas');
     const ctx = CANVAS.getContext('2d');
-    const WIDTH = CANVAS.width = window.screen.width / 2;
-    const HEIGHT = CANVAS.height = window.screen.height / 2;
+    const WIDTH = CANVAS.width = window.screen.width;
+    const HEIGHT = CANVAS.height = window.screen.height;
 
-    preCanvas.style.width = `${window.screen.width / 2}px`;
-    preCanvas.style.height = `${window.screen.height / 2}px`;
+    preCanvas.style.width = `${window.screen.width / 0}px`;
+    preCanvas.style.height = `${window.screen.height / 0}px`;
 
     const FPS = 60;
     const SPEED = 1;
@@ -14,14 +16,14 @@ window.onload = () => {
     let particles = [];
     let mousePos = { x: undefined, y: undefined };
 
-    const randomParticles = localStorage.getItem('randomParticles') ? localStorage.getItem('randomParticles').split(',') : [':p', 'Charcutero', 'Perro Sanxe', 'PABLOOOOOO']
+    const randomParticles = localStorage.getItem('randomParticles') ? localStorage.getItem('randomParticles').split(',') : ['default']
 
     if(!localStorage.getItem('randomParticles')){
         localStorage.setItem('randomParticles', randomParticles.toString())
     }
 
     const fontSize = '25px'
-    const areaRange = 100
+    const areaRange = 200
 
     function getMousePos(canvas, evt) {
         const rect = canvas.getBoundingClientRect();
@@ -50,7 +52,7 @@ window.onload = () => {
         draw() {
             ctx.beginPath();
             // ctx.arc(this.x, this.y, this.tileSize, 0, 2 * Math.PI);
-            ctx.font = `${fontSize} Arial`;
+            ctx.font = `${fontSize} Impact`;
             ctx.fillText(randomParticles[this.ranNumParticle], this.x, this.y)
             ctx.fillStyle = this.color;
             // ctx.fill();
