@@ -1,0 +1,11 @@
+{
+    "name": "Word Background",
+    "version": "0.0.1",
+    "description": "Satisfactorio fondo de pantalla con palabras o emojis que quieras!",
+    "manifest_version": 3,
+    "author": "Javier Colmena Martos",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "WordBackground"
+    }
+}

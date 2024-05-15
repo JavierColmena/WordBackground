@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Background</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.3.0/tabler-icons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <main class="relative mx-auto" id="preCanvas">
+    <div class="absolute flex items-center justify-between w-full p-5 bg-black/80">
+      <div>
+        <h1 class="text-lg uppercase font-bold">Words:</h1>
+        <ul class="lista" id="lista">
+        </ul>
+        <form>
+          <input required class="bg-neutral-800  outline-none text-white rounded-md" type="text" name="word"
+            id="inputWord">
+          <button id="addItem" class="bg-green-500 w-6 p-1 rounded-md">
+            <img src="add.png" class="invert" alt="trash">
+          </button>
+        </form>
+      </div>
+      <div>
+        <button>Cerrar</button>
+      </div>
+    </div>
+    <canvas id="canvas"></canvas>
+  </main>
+  <script src="wordList.js"></script>
+
+</body>
+
+</html>

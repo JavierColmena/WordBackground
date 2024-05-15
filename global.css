@@ -1,0 +1,25 @@
+:root{
+    content: 'ec8f';
+
+}
+
+* {
+    color-scheme: dark;
+    overflow: hidden;
+}
+
+main {
+    border-radius: 10px;
+
+    canvas {
+        opacity: 1;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+    &:hover canvas {
+        border-radius: 10px;
+        opacity: 1;
+
+    }
+}
