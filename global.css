@@ -1,4 +1,4 @@
-:root{
+:root {
     content: 'ec8f';
 
 }
@@ -7,8 +7,10 @@
     color-scheme: dark;
     overflow: hidden;
 }
+
 main {
     border-radius: 10px;
+    position: relative;
 
     canvas {
         opacity: 1;
@@ -23,10 +25,41 @@ main {
     }
 }
 
-.open{
-    display: block;
+
+.open {
+    animation-duration: .5s;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
 }
-.close{
-    align-self: flex-end;
-    display: none;
+
+.close {
+    animation-duration: .5s;
+    animation-name: fadeOut;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        display: block;
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    to {
+        transform: scaleY(0);
+        opacity: 0;
+        display: none;
+
+    }
 }

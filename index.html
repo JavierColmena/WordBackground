@@ -13,12 +13,12 @@
 
 <body>
   <main class="relative mx-auto" id="preCanvas">
-    <div class="absolute flex items-center justify-between w-full p-5 bg-black/80">
-      <div id="menu">
+    <div class="navbar absolute flex items-center justify-between w-full p-5 bg-black/80">
+      <div id="menu" class="w-full ">
         <h1 class="text-lg uppercase font-bold">Words:</h1>
         <ul class="lista" id="lista">
         </ul>
-        <form>
+        <form class="flex gap-2 items-center mt-3">
           <input required class="bg-neutral-800  outline-none text-white rounded-md" type="text" name="word"
             id="inputWord">
           <button id="addItem" class="bg-green-500 w-6 p-1 rounded-md">
@@ -26,7 +26,7 @@
           </button>
         </form>
       </div>
-      <div>
+      <div class="w-full flex justify-end">
         <button id="openClose">Cerrar</button>
       </div>
     </div>

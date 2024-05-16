@@ -1,8 +1,7 @@
 const lista = document.getElementById('lista');
 const addItem = document.getElementById('addItem')
 const inputWord = document.getElementById('inputWord')
-const openClose = document.getElementById('openClose')
-const menu = document.getElementById('menu')
+
 
 let words = localStorage.getItem('randomParticles') ? localStorage.getItem('randomParticles').split(',') : [];
 
@@ -11,21 +10,16 @@ function delWord(word) {
         return wordFil != word
     }));
 
-    words = words.filter(w => w !== word); 
+    words = words.filter(w => w !== word);
     renderWordList();
 }
 
-addItem.onclick = () =>{
+addItem.onclick = () => {
     let word = inputWord.value
     // words.push(word)
-    localStorage.setItem('randomParticles', [...words,word]);
+    localStorage.setItem('randomParticles', [...words, word]);
     renderWordList();
 
-}
-let isOpen = true
-openClose.onclick = () =>{
-    
-    isOpen ? menu.classList.toggle('close') : menu.classList.toggle('close')
 }
 
 function renderWordList() {

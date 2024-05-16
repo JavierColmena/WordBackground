@@ -1,11 +1,11 @@
-window.onload = () => {
 
+window.onload = () => {
 
     const CANVAS = document.getElementById('canvas');
     const preCanvas = document.getElementById('preCanvas');
     const ctx = CANVAS.getContext('2d');
-    const WIDTH = CANVAS.width = window.screen.width;
-    const HEIGHT = CANVAS.height = window.screen.height;
+    const WIDTH = CANVAS.width = document.documentElement.clientWidth;
+    const HEIGHT = CANVAS.height = document.documentElement.clientHeight;
 
     preCanvas.style.width = `${window.screen.width}px`;
     preCanvas.style.height = `${window.screen.height}px`;
@@ -21,7 +21,6 @@ window.onload = () => {
     if (!localStorage.getItem('randomParticles')) {
         localStorage.setItem('randomParticles', randomParticles.toString())
     }
-
     const fontSize = '25px'
     const areaRange = 150
 
@@ -64,8 +63,8 @@ window.onload = () => {
         draw() {
             ctx.beginPath();
             // ctx.arc(this.x, this.y, this.tileSize, 0, 2 * Math.PI);
-            ctx.shadowColor = 'blue';
-            ctx.shadowBlur = 70;
+            ctx.shadowColor = 'cyan'
+            ctx.shadowBlur = 50;
             ctx.font = `${fontSize} Arial`;
             ctx.fillText(randomParticles[this.ranNumParticle], this.x, this.y)
             ctx.fillStyle = 'cyan';
@@ -129,6 +128,31 @@ window.onload = () => {
         return Math.round(Math.random() * num);
     }
 
-    generateParticles(1000);
+    generateParticles(100);
     loop();
+
+
+
+    
+    const openClose = document.getElementById('openClose');
+    const menu = document.getElementById('menu');
+    let isOpen = true;
+    
+    openClose.onclick = () => {
+        isOpen = !isOpen;
+    
+        if (isOpen) {
+            menu.classList.add('open');
+            menu.classList.remove('close');
+            openClose.innerHTML = 'Cerrar';
+        } else {
+            menu.classList.remove('open');
+            menu.classList.add('close');
+            openClose.innerHTML = 'Abrir';
+        }
+    };
+    
+
+
+
 };
