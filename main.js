@@ -7,8 +7,8 @@ window.onload = () => {
     const WIDTH = CANVAS.width = document.documentElement.clientWidth;
     const HEIGHT = CANVAS.height = document.documentElement.clientHeight;
 
-    preCanvas.style.width = `${window.screen.width}px`;
-    preCanvas.style.height = `${window.screen.height}px`;
+    // preCanvas.style.width = `${window.screen.width}px`;
+    // preCanvas.style.height = `${window.screen.height}px`;
 
     const FPS = 60;
     const SPEED = .3;
@@ -132,27 +132,23 @@ window.onload = () => {
     loop();
 
 
-
-    
     const openClose = document.getElementById('openClose');
     const menu = document.getElementById('menu');
-    let isOpen = true;
-    
+    let isOpen = false;
+    menu.classList.add('close');
+
     openClose.onclick = () => {
         isOpen = !isOpen;
-    
+
         if (isOpen) {
             menu.classList.add('open');
             menu.classList.remove('close');
             openClose.innerHTML = 'Cerrar';
         } else {
-            menu.classList.remove('open');
             menu.classList.add('close');
+            menu.classList.remove('open');
             openClose.innerHTML = 'Abrir';
         }
     };
     
-
-
-
 };
