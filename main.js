@@ -131,7 +131,7 @@ window.onload = () => {
         return Math.round(Math.random() * num);
     }
 
-    generateParticles(100);
+    generateParticles(200);
     loop();
 
 
