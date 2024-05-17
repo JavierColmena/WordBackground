@@ -27,13 +27,13 @@ function renderWordList() {
 
     words.forEach(word => {
         const li = document.createElement('li');
-        li.classList.add('flex', 'gap-3');
+        li.classList.add('flex', 'gap-3', 'items-center', 'justify-between');
 
         const h1 = document.createElement('h1');
         h1.textContent = word;
 
         const button = document.createElement('button');
-        button.classList.add('bg-red-500', 'w-6', 'p-1', 'rounded-md');
+        button.classList.add('bg-red-500', 'max-w-6', 'p-1', 'rounded-md');
         button.innerHTML = '<img src="trash.png" class="invert" alt="trash">';
         button.onclick = () => delWord(word);
 

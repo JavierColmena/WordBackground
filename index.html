@@ -14,17 +14,43 @@
 <body>
   <main class="relative mx-auto" id="preCanvas">
     <div class="navbar absolute flex items-center justify-between w-full p-5 bg-black/80">
-      <div id="menu" class="w-full ">
-        <h1 class="text-lg uppercase font-bold">Words:</h1>
-        <ul class="lista" id="lista">
-        </ul>
-        <form class="flex gap-2 items-center mt-3">
-          <input required class="bg-neutral-800  outline-none text-white rounded-md" type="text" name="word"
-            id="inputWord">
-          <button id="addItem" class="bg-green-500 w-6 p-1 rounded-md">
-            <img src="add.png" class="invert" alt="trash">
-          </button>
-        </form>
+      <div id="menu" class="w-full grid gap-5 grid-cols-3">
+        <div class="col-span-1 max-w-[250px]">
+          <h1 class="text-lg uppercase font-bold">Words:</h1>
+          <form class="flex flex-col gap-2 items-center mt-3">
+            <div class="max-h-[100px] w-full  overflow-y-auto">
+              <ul class="lista flex flex-col gap-1" id="lista">
+              </ul>
+            </div>
+            <div class="flex w-full gap-2">
+              <input required class="bg-neutral-800 w-full outline-none text-white rounded-md" type="text" name="word"
+                id="inputWord">
+              <button id="addItem" class="bg-green-500 w-6 p-1 rounded-md">
+                <img src="add.png" class="invert" alt="trash">
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-span-1">
+          <h1 class="text-lg uppercase font-bold">Color Picker:</h1>
+          <div class="flex flex-wrap max-w-[150px] gap-3">
+            <div>
+              <div class="w-4 h-4 bg-cyan-500 cursor-pointer" onclick="changeColor('cyan')"></div>
+            </div>
+            <div>
+              <div class="w-4 h-4 bg-pink-500 cursor-pointer" onclick="changeColor('#FF00E4')"></div>
+            </div>
+            <div>
+              <div class="w-4 h-4 bg-green-500 cursor-pointer" onclick="changeColor('rgb(0,255, 0)')"></div>
+            </div>
+            <div>
+              <div class="w-4 h-4 bg-white cursor-pointer" onclick="changeColor('white')"></div>
+            </div>
+            <div>
+              <div class="w-4 h-4 bg-red-500 cursor-pointer" onclick="changeColor('red')"></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="w-full flex justify-end">
         <button id="openClose">Abrir</button>
@@ -33,6 +59,12 @@
     <canvas id="canvas"></canvas>
   </main>
   <script src="wordList.js"></script>
+  <script>
+    function changeColor(color){
+        localStorage.setItem('colorValue', color)
+        location.reload()
+    }
+  </script>
 
 </body>
 

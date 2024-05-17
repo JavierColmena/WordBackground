@@ -1,6 +1,9 @@
 
 window.onload = () => {
 
+    const colorButton = document.getElementById('colorButton')
+    const colorValue = localStorage.getItem('colorValue') ? localStorage.getItem('colorValue') : 'cyan'
+
     const CANVAS = document.getElementById('canvas');
     const preCanvas = document.getElementById('preCanvas');
     const ctx = CANVAS.getContext('2d');
@@ -55,7 +58,7 @@ window.onload = () => {
             this.x = x;
             this.y = y;
             this.tileSize = tileSize;
-            this.color = `rgba(${randomNum(255)},${randomNum(255)},${randomNum(255)},${Math.random() * 1})`;
+            // this.color = `rgba(${randomNum(255)},${randomNum(255)},${randomNum(255)},${Math.random() * 1})`;
             // this.color = 'white'
             this.randomVelocity();
             this.ranNumParticle = Math.floor(Math.random() * randomParticles.length)
@@ -63,11 +66,11 @@ window.onload = () => {
         draw() {
             ctx.beginPath();
             // ctx.arc(this.x, this.y, this.tileSize, 0, 2 * Math.PI);
-            ctx.shadowColor = 'cyan'
+            ctx.shadowColor = colorValue
             ctx.shadowBlur = 50;
             ctx.font = `${fontSize} Arial`;
             ctx.fillText(randomParticles[this.ranNumParticle], this.x, this.y)
-            ctx.fillStyle = 'cyan';
+            ctx.fillStyle = colorValue;
             // ctx.fill();
         }
 
@@ -135,7 +138,10 @@ window.onload = () => {
     const openClose = document.getElementById('openClose');
     const menu = document.getElementById('menu');
     let isOpen = false;
-    menu.classList.add('close');
+
+    isOpen ? menu.classList.add('open') : menu.classList.add('hidden');
+    isOpen ? openClose.innerHTML = 'Cerrar' : openClose.innerHTML = 'Abrir';
+
 
     openClose.onclick = () => {
         isOpen = !isOpen;
@@ -143,6 +149,7 @@ window.onload = () => {
         if (isOpen) {
             menu.classList.add('open');
             menu.classList.remove('close');
+            menu.classList.remove('hidden');
             openClose.innerHTML = 'Cerrar';
         } else {
             menu.classList.add('close');
@@ -150,5 +157,5 @@ window.onload = () => {
             openClose.innerHTML = 'Abrir';
         }
     };
-    
+
 };
